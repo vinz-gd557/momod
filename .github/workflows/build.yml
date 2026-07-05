@@ -25,8 +25,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # INI KUNCINYA! Biar environment variable nempel kuat di GitHub Runner
+      - name: Setup Geode CLI
+        uses: geode-sdk/setup-geode@main
+
       - name: Build Mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          sdk: v5.7.1
+          bindings: geode-sdk/bindings
+          bindings-ref: main
           target: ${{ matrix.config.target }}
