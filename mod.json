@@ -1,0 +1,16 @@
+{
+    "geode": "5.7.1",
+    "gd": "2.2081",
+    "id": "vinz.novaclient_gd",
+    "name": "NovaClient GD",
+    "version": "1.0.0",
+    "developer": "Vinz",
+    "description": "Premium multi-tab floating mod menu for Geometry Dash.",
+    "dependencies": [
+        {
+            "id": "geode.node-ids",
+            "version": ">=v1.23.3",
+            "importance": "required"
+        }
+    ]
+}

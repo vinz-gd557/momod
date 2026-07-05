@@ -1,0 +1,36 @@
+name: Build Geode Mod
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - name: Android64
+            os: ubuntu-latest
+            target: Android64
+
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Mod
+        uses: geode-sdk/build-geode-mod@main
+        with:
+          bindings: geode-sdk/bindings
+          bindings-ref: main
+          geode-ref: v5.7.1
+          target: ${{ matrix.config.target }}
+        env:
+          GEODE_GD_VERSION: "2.2081"
