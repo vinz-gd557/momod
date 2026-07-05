@@ -10,28 +10,15 @@ on:
 
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-          - name: Android64
-            os: ubuntu-latest
-            target: Android64
-
-    name: ${{ matrix.config.name }}
-    runs-on: ${{ matrix.config.os }}
-
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # INI KUNCINYA! Biar environment variable nempel kuat di GitHub Runner
-      - name: Setup Geode CLI
-        uses: geode-sdk/setup-geode@main
-
+      # Kita set manual path SDK-nya di sini, gak usah pake setup-geode
       - name: Build Mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          bindings: geode-sdk/bindings
-          bindings-ref: main
-          target: ${{ matrix.config.target }}
+          target: Android64
+        env:
+          GEODE_SDK: /home/runner/.local/share/Geode/sdk
