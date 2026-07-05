@@ -28,9 +28,5 @@ jobs:
       - name: Build Mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          bindings: geode-sdk/bindings
-          bindings-ref: main
-          geode-ref: v5.7.1
+          sdk: v5.7.1
           target: ${{ matrix.config.target }}
-        env:
-          GEODE_GD_VERSION: "2.2081"
